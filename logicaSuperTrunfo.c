@@ -1,9 +1,10 @@
 #include <stdio.h>
 #include <string.h>
 
+
 int main() {
      char estado1[3], codigo1[4], nome1[50], estado2[3], codigo2[4], nome2[50];
-     int ponTuristicos1, ponTuristicos2;
+     int ponTuristicos1, ponTuristicos2, comparacaoUsuario;
      unsigned long int populacao1, populacao2;
      float area1, pib1, area2, pib2, densoPop1, densoPop2, pibCapita1, pibCapita2, superPoder1, superPoder2;
 
@@ -77,15 +78,92 @@ int main() {
      printf("Super poder 1: %.2f\n", superPoder1);
      printf("Super poder 2: %.2f\n", superPoder2);
      */
-    
-     printf("\nO fator de decisão é : População\n");
 
-     printf("Carta 1 - %s (%s): %u\n", nome1, estado1, populacao1);
-     printf("Carta 2 - %s (%s): %u\n", nome2, estado2, populacao2);
-     if (populacao1 > populacao2) {
-          printf("Resultado: Carta 1 (%s) venceu!", nome1);
-     } else {
-          printf("Resultado: Carta 2 (%s) venceu!", nome2);
+     printf("\nSelecione o atributo de comparação entre as cartas: \n");
+     printf("1. População\n");
+     printf("2. Área\n");
+     printf("3. PIB\n");
+     printf("4. Número de pontos turísticos\n");
+     printf("5. Densidade Populacional\n");
+     printf("Escolha (1-5): ");
+     scanf("%d", &comparacaoUsuario);
+
+     switch (comparacaoUsuario)
+     {
+     case 1: // População
+          printf("\n\nO fator de decisão é : População\n");
+
+          printf("Carta 1 - %s (%s): %u\n", nome1, estado1, populacao1);
+          printf("Carta 2 - %s (%s): %u\n\n", nome2, estado2, populacao2);
+          if (populacao1 > populacao2) {
+               printf("Resultado: Carta 1 (%s) venceu!", nome1);
+          } else if (populacao1 < populacao2) {
+               printf("Resultado: Carta 2 (%s) venceu!", nome2);
+          } else {
+               printf("Resultado: Empate!");
+          }
+          break;
+     
+     case 2: // Área
+          printf("\n\nO fator de decisão é : Área\n");
+
+          printf("Carta 1 - %s (%s): %.2f\n", nome1, estado1, area1);
+          printf("Carta 2 - %s (%s): %.2f\n\n", nome2, estado2, area2);
+          if (area1 > area2) {
+               printf("Resultado: Carta 1 (%s) venceu!", nome1);
+          } else if (area1 < area2) {
+               printf("Resultado: Carta 2 (%s) venceu!", nome2);
+          } else {
+               printf("Resultado: Empate!");
+          }
+          break;
+
+     case 3: // PIB
+          printf("\n\nO fator de decisão é : PIB\n");
+
+          printf("Carta 1 - %s (%s): %.2f\n", nome1, estado1, pib1);
+          printf("Carta 2 - %s (%s): %.2f\n\n", nome2, estado2, pib2);
+          if (pib1 > pib2) {
+               printf("Resultado: Carta 1 (%s) venceu!", nome1);
+          } else if (pib1 < pib2) {
+               printf("Resultado: Carta 2 (%s) venceu!", nome2);
+          } else {
+               printf("Resultado: Empate!");
+          }
+          break;
+
+     case 4: // Pontos turísticos
+          printf("\n\nO fator de decisão é : Número de Pontos Turísticos\n");
+
+          printf("Carta 1 - %s (%s): %u\n", nome1, estado1, ponTuristicos1);
+          printf("Carta 2 - %s (%s): %u\n\n", nome2, estado2, ponTuristicos2);
+          if (ponTuristicos1 > ponTuristicos2) {
+               printf("Resultado: Carta 1 (%s) venceu!", nome1);
+          } else if (ponTuristicos1 < ponTuristicos2) {
+               printf("Resultado: Carta 2 (%s) venceu!", nome2);
+          } else {
+               printf("Resultado: Empate!");
+          }
+          break;
+
+     case 5: // Densidade Populacional
+          // Menos é melhor!
+          printf("\n\nO fator de decisão é : Densidade Populacional\n");
+
+          printf("Carta 1 - %s (%s): %.2f\n", nome1, estado1, densoPop1);
+          printf("Carta 2 - %s (%s): %.2f\n\n", nome2, estado2, densoPop2);
+          if (densoPop2 > densoPop1) {
+               printf("Resultado: Carta 1 (%s) venceu!", nome1);
+          } else if (densoPop2 < densoPop1) {
+               printf("Resultado: Carta 2 (%s) venceu!", nome2);
+          } else {
+               printf("Resultado: Empate!");
+          }
+          break;  
+
+     default:
+          printf("ERRO: Seleção inválida.");
+          break;
      }
 
      return 0;
